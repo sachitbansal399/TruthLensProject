@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TruthLens | Fake News Detector</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<nav>
+    <div class="brand">Truth<span>Lens</span></div>
+    <div class="nav-links">
+        <a href="/">Detector</a>
+        <a href="/about">About</a>
+    </div>
+</nav>
+
+<main>
+    <section class="hero">
+        <div class="badge">AI • NLP • MACHINE LEARNING</div>
+        <h1>Is this news <span>real or fake?</span></h1>
+        <p>Paste a news headline or article below. Our trained NLP model analyzes the text and gives a prediction.</p>
+    </section>
+
+    <section class="card">
+        <form method="POST">
+            <label for="news_text">News headline / article</label>
+            <textarea id="news_text" name="news_text" placeholder="Paste the news text here..." required>{{ text }}</textarea>
+            <button type="submit">CHECK NEWS →</button>
+        </form>
+
+        {% if error %}
+        <div class="alert">{{ error }}</div>
+        {% endif %}
+
+        {% if result %}
+        <div class="result {{ 'real' if result == 'REAL' else 'fake' }}">
+            <div class="result-icon">{{ '✓' if result == 'REAL' else '!' }}</div>
+            <div>
+                <div class="small">MODEL PREDICTION</div>
+                <h2>{{ result }}</h2>
+                {% if confidence is not none %}
+                <p>Model confidence: <strong>{{ confidence }}%</strong></p>
+                {% endif %}
+            </div>
+        </div>
+        <p class="disclaimer">This is an AI model prediction based on patterns learned from its training dataset. It is not a substitute for professional fact-checking.</p>
+        {% endif %}
+    </section>
+
+    <section class="features">
+        <div><b>01</b><h3>Clean</h3><p>Text is normalized before analysis.</p></div>
+        <div><b>02</b><h3>Convert</h3><p>TF-IDF converts words into numerical features.</p></div>
+        <div><b>03</b><h3>Predict</h3><p>Logistic Regression classifies the news.</p></div>
+    </section>
+</main>
+
+<footer>TruthLens • Class 12 AI Project</footer>
+</body>
+</html>

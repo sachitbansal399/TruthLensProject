@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | TruthLens</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<nav>
+    <div class="brand">Truth<span>Lens</span></div>
+    <div class="nav-links"><a href="/">Detector</a><a href="/about">About</a></div>
+</nav>
+<main>
+    <section class="hero left">
+        <div class="badge">ABOUT THE PROJECT</div>
+        <h1>How TruthLens works</h1>
+        <p>This project uses a simple Natural Language Processing pipeline that is easy to understand and explain in a school viva.</p>
+    </section>
+    <section class="card about-card">
+        <h2>Model pipeline</h2>
+        <ol>
+            <li><strong>Dataset:</strong> labelled real and fake news articles.</li>
+            <li><strong>Preprocessing:</strong> lowercasing, URL removal and basic character cleaning.</li>
+            <li><strong>TF-IDF:</strong> converts text into numerical features based on word importance.</li>
+            <li><strong>Logistic Regression:</strong> learns the relationship between those features and the labels.</li>
+            <li><strong>Flask:</strong> provides the website interface for making predictions.</li>
+        </ol>
+        <p class="disclaimer">Important: a classifier can make mistakes and can be affected by changes in news style or topics. A prediction should not be treated as proof that a story is true or false.</p>
+    </section>
+</main>
+<footer>TruthLens • Class 12 AI Project</footer>
+</body>
+</html>
